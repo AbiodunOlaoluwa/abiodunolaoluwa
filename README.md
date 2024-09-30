@@ -7,9 +7,9 @@
 
 <p align="left"> <a href="https://twitter.com/_solodev" target="blank"><img src="https://img.shields.io/twitter/follow/_solodev?logo=twitter&style=for-the-badge" alt="_solodev" /></a> </p>
 
-- 🔭 I’m currently working on [Devlinks](https://aosdevlinks.vercel.app)
+- 🔭 I’m recently worked on [Devlinks](https://aosdevlinks.vercel.app)
 
-- 🌱 I’m currently learning **Data Structures and Algorithms, C**
+- 🌱 I’m currently learning **Data Structures and Algorithms, C++**
 
 - 👯 I’m looking to collaborate on [Rexara Digital](https://rexara.digital)
 
