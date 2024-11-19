@@ -9,17 +9,17 @@
 
 - 🔭 I’m recently worked on [Devlinks](https://aosdevlinks.vercel.app)
 
-- 🌱 I’m currently learning **Data Structures and Algorithms, C++**
+- 🌱 I’m currently learning **Data Structures and Algorithms, NestJS**
 
 - 👯 I’m looking to collaborate on [Rexara Digital](https://rexara.digital)
 
-- 🤝 I’m looking for help with [Rexara Digital's Rentyx](https://rexara.digital)
+- 🤝 I’m looking for help with [Rexara Digital's Rentyx](https://rexara.digital/rentyx)
 
 - 👨‍💻 All of my projects are available at [https://abiodunolaoluwa.com](https://abiodunolaoluwa.com)
 
 - 📫 How to reach me **me@abiodunolaoluwa.com**
 
-- 📄 Know about my experiences [https://abiodunolaoluwa.com](https://abiodunolaoluwa.com)
+- 📄 Know about my experiences [LinkedIn](https://linkedin.com/in/abiodunolaoluwa)
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
