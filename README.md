@@ -1,6 +1,6 @@
 ## Hi, I'm [Olaoluwa Abiodun][Portfolio] 👋
 
-### Founder at [Rexara Digital][Rexara]; Technical Sourcer at Sourcing Sprints[SS]
+### Founder at [Rexara Digital][Rexara]; Technical Sourcer at [Sourcing Sprints][SS]
 - 🏫 Learn more about me on my [website][Portfolio]
 - 💬 Ask me about anything ([emails][Email] will result in the fastest responses)!
 - 📫 How to reach me: [Github][GitHub] | [LinkedIn][LinkedIn] | [Email][Email]
