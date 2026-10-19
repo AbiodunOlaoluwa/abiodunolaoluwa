@@ -2,13 +2,15 @@
 
 AI engineer in Lagos (UTC+1). I build LLM systems that hold up on real data: assistants that work inside rules they can't override, extraction that keeps only what it can ground, and evals that tell me when a change made things worse.
 
-Most of this I built for [Rentyx](https://rentyx.org), the property-management software I founded, where it runs in production. The two repos below rebuild the core pieces on fictional data, so you can run them.
+Most of this I built for [Rentyx](https://rentyx.org), the property-management software I founded, where it runs in production. The repos below show the same patterns in code you can run: two rebuild core pieces of it on fictional data, and one works on real legal texts.
 
 #### Public work
 
 **[Reply Desk](https://github.com/AbiodunOlaoluwa/reply-desk)**: an LLM answers replies to sales outreach as structured drafts. Fourteen server-side rules check every draft; a draft that fails gets one rewrite, then a person. Signed webhooks are processed exactly once, opt-outs are saved first, and everything that sends has a kill switch. Next.js, Postgres, Claude. 51 tests.
 
-**[Lead Engine](https://github.com/AbiodunOlaoluwa/lead-engine)**: messy directories in, a clean, scored contact list out. Grounded LLM extraction (every field must quote the page), entity resolution across sources (surname-first registers, Yoruba short forms), a resumable pipeline with a crash drill, and evals scored against ground truth: 100% precision on automatic merges, with the misses reported. Python, FastAPI, Claude. 25 tests.
+**[Lead Engine](https://github.com/AbiodunOlaoluwa/lead-engine)**: messy directories in, a clean, scored contact list out. Grounded LLM extraction (every field must quote the page), entity resolution across sources (surname-first registers, Yoruba short forms), a resumable pipeline with a crash drill, evals scored against ground truth (100% precision on automatic merges, with the misses reported), and a plain-English ICP that drives the scoring. Python, FastAPI, Claude. 48 tests.
+
+**[Cite Desk](https://github.com/AbiodunOlaoluwa/cite-desk)**: ask the law, get the paragraph it came from. RAG over 11 official texts (outreach rules for the US, EU, UK, Canada and Nigeria, plus Lagos tenancy law): keyword and embedding search fused and re-ranked on CPU, citations to the exact paragraph, and a gate that refuses or flags weak matches. Evals on 90 labelled questions show what each stage adds: the right provision in the top 5 for 89% of questions, against 61% for keyword search. Python, FastAPI, Claude. 34 tests.
 
 #### In production at Rentyx
 
