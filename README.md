@@ -1,35 +1,33 @@
 ### Olaoluwa Abiodun
 
-AI engineer in Lagos (UTC+1). I build LLM systems that hold up on real data: assistants that work inside rules they can't override, extraction that keeps only what it can ground, and evals that tell me when a change made things worse.
+I'm an engineer in Lagos (UTC+1). I like building LLM features that have to behave on real data, and I spend most of my time on the boring parts that make them trustworthy: the checks around the model and the tests that tell me when a change made things worse.
 
-Most of this I built for [Rentyx](https://rentyx.org), the property-management software I founded, where it runs in production. The repos below show the same patterns in code you can run: two rebuild core pieces of it on fictional data, and one works on real legal texts.
+Most of it started at [Rentyx](https://rentyx.org), a property-management platform I built for landlords and agents in Nigeria, where it runs in production. One firm is fully imported and running on a pilot, and two others are close to starting theirs. The three repos below rebuild the core pieces so you can run them yourself: two on fictional data, one on real legal texts.
 
 #### Public work
 
-**[Reply Desk](https://github.com/AbiodunOlaoluwa/reply-desk)** ([try it](https://reply-desk-8rzb.onrender.com)): an LLM answers replies to sales outreach as structured drafts. Fourteen server-side rules check every draft; a draft that fails gets one rewrite, then a person. Signed webhooks are processed exactly once, opt-outs are saved first, and everything that sends has a kill switch. Next.js, Postgres, Claude. 51 tests.
+**[Reply Desk](https://github.com/AbiodunOlaoluwa/reply-desk)** ([try it](https://reply-desk-8rzb.onrender.com)): an LLM drafts replies to sales outreach, and fourteen checks on the server decide whether a draft can go out. A draft that fails gets one rewrite, then a person takes over. Next.js, Postgres, Claude, 51 tests.
 
-**[Lead Engine](https://github.com/AbiodunOlaoluwa/lead-engine)** ([try it](https://lead-engine-yqxv.onrender.com)): messy directories in, a clean, scored contact list out. Grounded LLM extraction (every field must quote the page), entity resolution across sources (surname-first registers, Yoruba short forms), a resumable pipeline with a crash drill, evals scored against ground truth (100% precision on automatic merges, with the misses reported), and a plain-English ICP that drives the scoring. Python, FastAPI, Claude. 48 tests.
+**[Lead Engine](https://github.com/AbiodunOlaoluwa/lead-engine)** ([try it](https://lead-engine-yqxv.onrender.com)): takes public directory pages and turns them into a scored contact list. Every extracted field has to quote the page it came from, or it isn't stored. It matches the same firm across sources, including registers that write surname first and Yoruba short forms of names, and it only merges on its own when it's sure: in the evals, none of those automatic merges were wrong, and the uncertain ones go to review. A run that crashes picks up where it left off, and there's a drill to prove it. Python, FastAPI, Claude, 48 tests.
 
-**[Cite Desk](https://github.com/AbiodunOlaoluwa/cite-desk)** ([try it](https://cite-desk.onrender.com)): ask the law, get the paragraph it came from. RAG over 11 official texts (outreach rules for the US, EU, UK, Canada and Nigeria, plus Lagos tenancy law): keyword and embedding search fused and re-ranked on CPU, citations to the exact paragraph, and a gate that refuses or flags weak matches. Evals on 90 labelled questions show what each stage adds: the right provision in the top 5 for 89% of questions, against 61% for keyword search. Python, FastAPI, Claude. 34 tests.
+**[Cite Desk](https://github.com/AbiodunOlaoluwa/cite-desk)** ([try it](https://cite-desk.onrender.com)): answers questions about 11 official texts (outreach rules for the US, EU, UK, Canada and Nigeria, plus Lagos tenancy law) and cites the exact paragraph, or flags a weak match instead of guessing. On 90 labelled questions, keyword search alone found the right provision in the top 5 for 61% of them; adding embeddings and re-ranking (on CPU) took it to 89%. Python, FastAPI, Claude, 34 tests.
 
-#### In production at Rentyx
+#### Running in production at Rentyx
 
-- A WhatsApp assistant on Meta's Cloud API that handled 200 conversations in two weeks for $1.14 in model costs, and handed 19 of them to me at the right moment.
+- A WhatsApp assistant on Meta's Cloud API that handled 200 conversations in two weeks and handed 19 of them to me.
 - A Claude copilot inside the product that answers questions about a property portfolio through typed tools, with spending limits.
-- Scheduled AI agents that run prospecting, sending and follow-ups from runbooks, and refuse to act if their instructions fail an integrity check.
-- The platform itself: payments through signed, duplicate-safe webhooks, a double-entry ledger, and 5,000+ automated tests.
+- Scheduled agents that run prospecting, sending and follow-ups from runbooks, and refuse to act if their instructions fail an integrity check.
+- The platform itself: payments through signed webhooks that can't be processed twice, a double-entry ledger, and 5,000+ automated tests.
 
-#### How I build LLM systems
+#### Things that broke, and what changed
 
-- **The model drafts; code decides.** Structured outputs, then server-side checks the model can't override.
-- **Ground it or drop it.** Extracted facts carry evidence from the source, or they aren't stored.
-- **Measure before changing.** Evals against labelled data, reported with their misses.
-- **People own the consequential calls.** Sends, merges and money go through review or hard rules.
-- **Know the cost.** Tokens and dollars recorded per call, with budgets.
+- One day Meta held back half our WhatsApp sends. The cause was where the numbers came from, not our account, so the sender now goes to the cleanest sources first and reports attempts against delivered messages.
+- The assistant's playbook page grew past the size the loader accepts, and it quietly ran on an older copy for a day. It now reports which rules are live and why a page was rejected.
+- A firm's "Good afternoon" once got a reply asking about their rent records. Automatic greetings are now skipped before the model sees them.
 
 #### Tools
 
-Python, TypeScript, FastAPI, Next.js, Postgres, SQLite, Anthropic and OpenAI APIs (structured outputs, tool use, prompt caching), WhatsApp Cloud API, pytest, Vitest, Playwright, GitHub Actions, Claude Code.
+Python, TypeScript, FastAPI, Next.js, Postgres, SQLite, the Anthropic and OpenAI APIs, the WhatsApp Cloud API, pytest, Vitest, Playwright, GitHub Actions and Claude Code.
 
 #### Contact
 
